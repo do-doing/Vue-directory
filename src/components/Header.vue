@@ -1,6 +1,6 @@
 <template>
   <div>
-     <mt-header title="多个按钮">
+     <mt-header fixed title="多个按钮">
       <router-link to="/" slot="left">
         <mt-button icon="back">返回</mt-button>
       </router-link>
