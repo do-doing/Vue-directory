@@ -15,6 +15,7 @@ Vue.config.productionTip = false
 import { IndexList, IndexSection } from 'mint-ui';
 import { Popup } from 'mint-ui';
 import { Field } from 'mint-ui';
+import { Toast } from 'mint-ui';
 
 Vue.component(IndexList.name, IndexList);
 Vue.component(IndexSection.name, IndexSection);
