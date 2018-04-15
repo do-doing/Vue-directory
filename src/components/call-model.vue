@@ -30,7 +30,9 @@
   width: 100vw;
   line-height: 1.6;
   color: #fff;
-  background-image: -webkit-linear-gradient( 90deg, rgb(12,19,35) 0%, rgb(8,51,68) 100%);
+  /* background-image: -webkit-linear-gradient( 90deg, rgb(12,19,35) 0%, rgb(8,51,68) 100%); */
+  background-image: -webkit-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+
 }
 .container h1{
   font-size: 50px;

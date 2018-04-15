@@ -14,11 +14,12 @@ Vue.use(Mint);
 Vue.config.productionTip = false
 import { IndexList, IndexSection } from 'mint-ui';
 import { Popup } from 'mint-ui';
-
+import { Field } from 'mint-ui';
 
 Vue.component(IndexList.name, IndexList);
 Vue.component(IndexSection.name, IndexSection);
 Vue.component(Popup.name, Popup);
+Vue.component(Field.name, Field);
 
 /* eslint-disable no-new */
 new Vue({

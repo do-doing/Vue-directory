@@ -1,16 +1,15 @@
 <template>
   <div id="app">
     <Header/>
-    <mt-popup v-model="popupVisible" position="top"> 123424234234234</mt-popup>
     <div class="page-header-main">
-      <main-list/>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import mainList from '@/components/main-list.vue';
+import Header from '@/components/Header';
+// import mainList from '@/components/main-list';
 export default {
   name: 'App',
   data(){
@@ -20,7 +19,6 @@ export default {
   },
   components:{
     Header,
-    mainList
   }
 }
 </script>
