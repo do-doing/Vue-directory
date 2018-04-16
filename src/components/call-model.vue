@@ -5,6 +5,7 @@
         <h1>{{message.tel}}</h1>        
         <h2>{{message.name}}</h2>        
         <button class="cancelbtn" @click="hideModel">关闭</button>
+        <a @click="showMes(message)" >123123123</a>
       </div>
     </div>
   </div>
@@ -16,6 +17,12 @@
     methods:{
       hideModel:function(){
         this.$emit("listen",false)
+      },
+      showMes:function(){
+        this.$router.push({
+          name: "msgModel",
+          params: { parentMsg: this.message }
+        });
       }
     }
   }

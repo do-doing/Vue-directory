@@ -2,13 +2,14 @@
   <div class="msg-page">
     <mt-field label="收件人" placeholder="请输入用户名" v-model="message.name" state="success" disabled></mt-field>
     <mt-field label="电话" v-model="message.tel" state="success" disabled></mt-field>
-    <mt-field label="内容" placeholder="内容" type="textarea" rows="4" v-model="message.contant" autofocus></mt-field>
-    <input type="text" placeholder="搜索你想要的"  v-focus="focusStatus" @blur="focusStatus = false">
-    <mt-button @click.native="sendMessage()" type="primary" size="large">发送</mt-button>
     <p class="tips"><span>以下为信息记录</span></p>
     <div class="message-list">
       <div v-for="(item,index) in messageList" :key="index" :class="item.type">{{item.content}}
       </div>
+    </div>
+    <div class="bottom-box">
+      <input class="input-r" type="text" placeholder="发点什么吧" v-focus v-model="message.contant"/>
+      <mt-button @click.native="sendMessage()" type="primary" size="small"><span style="white-space: nowrap;">发送</span></mt-button>
     </div>
   </div>
 </template>
@@ -19,7 +20,6 @@ export default {
   name: "msgModel",
   data() {
     return {
-      focusStatus:true,
       message: {
         name: this.$route.params.parentMsg.name,
         tel: this.$route.params.parentMsg.tel,
@@ -39,7 +39,7 @@ export default {
         if (this.messageList.length > 2) {
           let ap2 = {
             type: "collect",
-            content: "你在烦我试试看!!"
+            content: "你再烦我试试看!!"
           };
           this.messageList.push(ap2);
         }else{
@@ -54,18 +54,23 @@ export default {
       }
     }
   },
-  updated(){
-      this.focusStatus = true;
-      console.log(this.focusStatus)
+  created(){
+    if(!this.message){
+      this.$router.push({name:'mainList'});
+    }
+  },
+  mounted(){
+    
+    document.querySelector('.message-list').style.height = window.outerHeight -document.querySelector('.message-list').offsetTop - document.querySelector('.bottom-box').offsetHeight +'px';
   },
   directives: {
-  focus: {
-    // 指令的定义
-    inserted: function (el) {
-      el.focus()
+    focus: {
+      // 指令的定义
+      inserted: function (el) {
+        el.focus()
+      }
     }
   }
-}
 };
 </script>
 
@@ -117,11 +122,12 @@ export default {
 }
 .message-list {
   display: flex;
+  box-sizing: border-box;
   flex-direction: column;
   align-items: flex-end;
   background: rgb(245, 245, 245);
   margin: 0 -15px;
-  padding: 15px;
+  padding: 15px 20px;
 }
 .collect {
   position: relative;
@@ -142,5 +148,23 @@ export default {
   font-size: 0;
   border: solid 8px;
   border-color: transparent rgb(255, 255, 255) transparent transparent;
+}
+.bottom-box{
+  position: fixed;
+  display:flex;
+  width:100%;
+  align-items: initial;
+  bottom: 0;
+  box-sizing: border-box;
+  left: 0;
+  padding: 15px;
+  justify-content: space-between;
+}
+.bottom-box input{
+  width: calc(100% - 80px);
+  border-top:none;
+  border-left:none;
+  border-right:none;
+  outline:none;
 }
 </style>
