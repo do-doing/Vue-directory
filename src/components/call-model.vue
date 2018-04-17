@@ -5,7 +5,7 @@
         <h1>{{message.tel}}</h1>        
         <h2>{{message.name}}</h2>        
         <button class="cancelbtn" @click="hideModel">关闭</button>
-        <a @click="showMes(message)" >123123123</a>
+        <div @click="showMes(message)">还是发短信吧</div>
       </div>
     </div>
   </div>
@@ -56,7 +56,7 @@
 .cancelbtn{
   background: #ff3333;
   color: #fff;
-  margin-top: 100px;
+  margin: 100px 0 50px;
   width: 80px;
   height: 80px;
   border-radius: 50%;

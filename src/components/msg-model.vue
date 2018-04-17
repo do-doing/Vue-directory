@@ -21,8 +21,8 @@ export default {
   data() {
     return {
       message: {
-        name: this.$route.params.parentMsg.name,
-        tel: this.$route.params.parentMsg.tel,
+        name: '',
+        tel: '',
         contant: ""
       },
       messageList: []
@@ -42,8 +42,6 @@ export default {
             content: "你再烦我试试看!!"
           };
           this.messageList.push(ap2);
-        }else{
-          
         }
         this.message.contant = "";
       } else {
@@ -55,12 +53,15 @@ export default {
     }
   },
   created(){
-    if(!this.message){
-      this.$router.push({name:'mainList'});
+    //无用户时候自动跳回通讯录
+    if(!this.$route.params.parentMsg){
+      this.$router.push('/')
+    }else{
+      this.message.name = this.$route.params.parentMsg.name;
+      this.message.tel = this.$route.params.parentMsg.tel;
     }
   },
   mounted(){
-    
     document.querySelector('.message-list').style.height = window.outerHeight -document.querySelector('.message-list').offsetTop - document.querySelector('.bottom-box').offsetHeight +'px';
   },
   directives: {
